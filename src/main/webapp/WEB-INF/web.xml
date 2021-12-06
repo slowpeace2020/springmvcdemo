@@ -5,6 +5,29 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
 
+<!--  全局初始化参数-->
+<!--  <context-param>-->
+<!--    <param-name>contextConfigLocation</param-name>-->
+<!--&lt;!&ndash; 自定义   <param-value>applicationContext.xml</param-value>&ndash;&gt;-->
+<!--    <param-value>classpath:applicationContext.xml</param-value>-->
+<!--  </context-param>-->
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:applicationContext.xml</param-value>
+  </context-param>
+
+<!--  配置监听器-->
+<!--<listener>-->
+<!--&lt;!&ndash; 自定义 <listener-class>com.freedom.study.listener.ContextLoaderListener</listener-class>&ndash;&gt;-->
+<!--  &lt;!&ndash;    用Spring的&ndash;&gt;-->
+<!--  <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
+<!--</listener>-->
+
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+
+<!--  访问路径映射-->
   <servlet>
     <servlet-name>UserServlet</servlet-name>
     <servlet-class>com.freedom.study.web.UserServlet</servlet-class>
