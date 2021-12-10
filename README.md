@@ -10,6 +10,17 @@
 ###Spring提供获取上下文应用的工具
 * 两步实现应用
   * 在web.xml中配置ContextLoaderListener监听器（导入Spring-web依赖）
+  ```
+   <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:applicationContext.xml</param-value>
+  </context-param>
+  
+    <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  ```
+  
   
   ```
       <dependency>
@@ -18,4 +29,20 @@
     <version>5.0.5.RELEASE</version>
   </dependency>
   ```
-  * 
+
+  * 读取web.xml中的全局参数
+  ```
+    String contextConfigLocation = servletContext.getInitParameter("contextConfigLocation");
+    ApplicationContext app = new ClassPathXmlApplicationContext(contextConfigLocation);
+  ```
+
+###快速入门
+需求:客户端发起请求，服务器端接收请求，执行逻辑并进行视图跳转。 
+* 开发步骤
+  1. 导入SpringMVC相关坐标 
+  2. 配置SpringMVC核心控制器DispathcerServlet 
+  3. 创建Controller类和视图页面 
+  4. 使用注解配置Controller类中业务方法的映射地址 
+  5. 配置SpringMVC核心文件 spring-mvc.xml 
+  6. 客户端发起请求测试
+  
