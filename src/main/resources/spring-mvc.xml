@@ -30,8 +30,8 @@ http://www.springframework.org/schema/mvc  http://www.springframework.org/schema
   <mvc:annotation-driven conversion-service="conversionService"/>
 
 <!--  开放资源的访问权限-->
+  <mvc:default-servlet-handler/>
   <mvc:resources mapping="/js/**" location="/js/"/>
-<!--  <mvc:default-servlet-handler/>-->
 
 <!--  声明转换器-->
   <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">

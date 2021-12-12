@@ -179,9 +179,12 @@ web.xml应该修改为
 当有静态资源需要加载时，比如jquery文件，通过谷歌开发者工具抓包发现，没有加载到jquery文件，原因是SpringMVC的前端控制器DispatcherServlet的url-pattern配置的是/,代表对所有的资源都进行过滤操作，我们可以通过以下两种方式指定放行静态资源：
 
 
-开放资源的访问权限没有成功 原因不明？
-•在spring-mvc.xml配置文件中指定放行的资源 <mvc:resources mapping="/js/**"location="/js/"/>
+开放资源的访问权限没有成功 原因不明？以下配置同时添加到spring-mvc.xml
 •使用 <mvc:default-servlet-handler/> 标签
+•在spring-mvc.xml配置文件中指定放行的资源 <mvc:resources mapping="/js/**"location="/js/"/>
+
+
+
 
 
 
@@ -218,7 +221,6 @@ required：是否必须携带此请求头
 value：指定cookie的名称
 
 required：是否必须携带此cookie
-
 
 
 
