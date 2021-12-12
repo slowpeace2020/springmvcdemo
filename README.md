@@ -148,3 +148,79 @@ SpringMVC基于Spring容器，所以在进行SpringMVC操作时，需要将Contr
   * 返回对象或者集合
 
 
+ModelAndView 添加的属性取不出来？
+
+EL表达式无法获取到Controller ModelAndView的值，Maven
+自动生成的web.xml内容如下：
+```
+<!DOCTYPE web-app PUBLIC  
+"-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"  
+"http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>  
+
+</web-app>
+
+```
+
+web.xml应该修改为
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app version="2.5"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+         http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+</web-app>
+
+```
+当有静态资源需要加载时，比如jquery文件，通过谷歌开发者工具抓包发现，没有加载到jquery文件，原因是SpringMVC的前端控制器DispatcherServlet的url-pattern配置的是/,代表对所有的资源都进行过滤操作，我们可以通过以下两种方式指定放行静态资源：
+
+
+开放资源的访问权限没有成功 原因不明？
+•在spring-mvc.xml配置文件中指定放行的资源 <mvc:resources mapping="/js/**"location="/js/"/>
+•使用 <mvc:default-servlet-handler/> 标签
+
+
+
+
+### 20-SpringMVC的请求-获得请求参数-Restful风格的参数的获取(应用)
+
+Restful是一种软件架构风格、设计风格，而不是标准，只是提供了一组设计原则和约束条件。主要用于客户端和服务器交互类的软件，基于这个风格设计的软件可以更简洁，更有层次，更易于实现缓存机制等。
+
+Restful风格的请求是使用“url+请求方式”表示一次请求目的的，HTTP 协议里面四个表示操作方式的动词如下：
+
+GET：用于获取资源
+
+POST：用于新建资源
+
+PUT：用于更新资源
+
+DELETE：用于删除资源  
+
+
+### 23-SpringMVC的请求-获得请求参数-获得请求头信息(应用)
+
+使用@RequestHeader可以获得请求头信息，相当于web阶段学习的request.getHeader(name)
+
+@RequestHeader注解的属性如下：
+
+value：请求头的名称
+
+required：是否必须携带此请求头
+
+使用@CookieValue可以获得指定Cookie的值
+
+@CookieValue注解的属性如下：
+
+value：指定cookie的名称
+
+required：是否必须携带此cookie
+
+
+
+
+
+
