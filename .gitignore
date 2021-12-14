@@ -1,3 +1,6 @@
 /.idea/
-/myspringmvc.iml
+*.iml
 /target/
+/demo/demo.iml
+/usermanagement/target/
+*/target/*

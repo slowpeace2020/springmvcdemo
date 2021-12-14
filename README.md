@@ -223,6 +223,27 @@ value：指定cookie的名称
 required：是否必须携带此cookie
 
 
+####springmvc 使用了登录拦截器之后静态资源还是会被拦截的处理办法?
+* 在spring-mvc.xml拦截器的配置里加上静态资源的处理
+```
+    <!--配置权限拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--配置对哪些资源执行拦截操作-->
+            <mvc:mapping path="/**"/>
+            <!--配置哪些资源排除拦截操作-->
+            <mvc:exclude-mapping path="/user/login"/>
+            <mvc:exclude-mapping path="/img/**"/>
+            <mvc:exclude-mapping path="/plugins/**"/>
+            <mvc:exclude-mapping path="/css/**"/>
+            <bean class="com.example.demo.interceptor.PreviligeInterCeptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+```
+
+day03/02尚未开始
+
 
 
 

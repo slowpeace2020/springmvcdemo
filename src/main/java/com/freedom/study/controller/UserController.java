@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.freedom.study.domain.User;
 import com.freedom.study.domain.ViewOut;
+import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Date;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -208,6 +210,21 @@ public class UserController {
   public void save19(@CookieValue(value = "JSESSIONID", required = false) String jsessionId) {
     System.out.println("RequestHeader save19 auto find....");
     System.out.println(jsessionId);
+  }
+
+  @RequestMapping(value = "/quick20")
+  @ResponseBody
+  public void save20(@CookieValue(value = "JSESSIONID", required = false) String jsessionId) {
+    System.out.println("RequestHeader save19 auto find....");
+    System.out.println(jsessionId);
+  }
+
+  @RequestMapping(value = "/quick21")
+  @ResponseBody
+  public void save22(String username, MultipartFile uploadFile) throws IOException {
+    System.out.println(username);
+    String originalFilename = uploadFile.getOriginalFilename();
+    uploadFile.transferTo(new File("uploadfiles/"+originalFilename));
   }
 
 }
