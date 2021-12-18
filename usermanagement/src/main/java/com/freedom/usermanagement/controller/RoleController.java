@@ -26,6 +26,7 @@ public class RoleController {
     ModelAndView modelAndView = new ModelAndView();
 
     List<Role> roleList = roleService.list();
+    System.out.println(roleList);
     //设置模型
     modelAndView.addObject("roleList",roleList);
     //设置视图
@@ -33,5 +34,15 @@ public class RoleController {
 
     return modelAndView;
   }
+
+  @RequestMapping("/save")
+  public String save(Role role){
+
+    roleService.save(role);
+
+    return "redirect:/role/list";
+  }
+
+
 
 }

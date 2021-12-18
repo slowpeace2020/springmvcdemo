@@ -242,7 +242,6 @@ required：是否必须携带此cookie
 
 ```
 
-day03/02尚未开始
 
 
 

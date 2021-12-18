@@ -1,5 +1,6 @@
 /.idea/
 *.iml
+*.DS_Store
 /target/
 /demo/demo.iml
 /usermanagement/target/
